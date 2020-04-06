@@ -9,6 +9,7 @@ import './main.scss';
 
 function App() {
   const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
 
   const [data, setData] = React.useState({
     Global: {
@@ -22,34 +23,45 @@ function App() {
   });
 
   React.useEffect(() => {
-    getSummaryStats().then(res => {
-      setData({...res, FilteredCountries: res.Countries});
-      setLoading(false);
-    });
+    getSummaryStats()
+      .then(res => {
+        setData({ ...res, FilteredCountries: res.Countries });
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+        setError(true);
+      });
   }, []);
 
-  const countryFilter = ({target}) => {
+  const countryFilter = ({ target }) => {
     setData({
       ...data,
       FilteredCountries: data.Countries.filter(item => {
         return item.Country.toLowerCase().indexOf(target.value.toLowerCase()) !== -1;
       })
-    })
-  }
+    });
+  };
 
   return (
     <React.Fragment>
       <Header />
-      {loading ? 
-        <div className="flex-grow-1 container" style={{ position: 'relative' }}>
+      {error ? (
+        <div className="container flex-grow-1  p-5">
+          <h2 style={{textAlign: 'center'}}>Error loading data!</h2>
+        </div>
+      ) : null}
+      {loading ? (
+        <div className="container flex-grow-1 ">
           <Spinner />
         </div>
-        : 
+      ) : null}
+      {!error && !loading ? (
         <div className="flex-grow-1">
           <Summary global={data.Global} lastUpdate={data.Date} />
           <Countries countries={data.FilteredCountries} countryFilter={countryFilter} />
         </div>
-      }
+      ) : null}
       <Footer />
     </React.Fragment>
   );

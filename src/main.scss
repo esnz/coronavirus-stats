@@ -1,0 +1,60 @@
+@import '~bootstrap/scss/bootstrap-grid' ;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: #F4F5F5;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.info-box {
+    background-color: #fff;
+    margin-top: 1rem;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(197, 197, 197, 0.16);
+    overflow: hidden;
+}
+
+.section-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    h6 {
+        flex-grow: 1;
+        color: #848484;
+        font-size: 1.375rem;
+        font-weight: 500;
+
+        svg {
+            color: #C6D8DB;
+        }
+
+        span {
+            margin-left: 6px;
+        }
+    }
+    p {
+        color: #848484;
+        font-size: .8rem;
+        font-weight: 400;
+    }
+}

@@ -1,0 +1,46 @@
+$breakpoint: 750px;
+$heading-bg-color: #e9ecec;
+$heading-text-color: #848484;
+$cell-text-color: #444;
+
+.table-wrapper {
+    overflow-x: auto;
+
+    table {
+        border: none;
+        width: 100%;
+        
+        thead th {
+            padding: 1rem;
+            text-align: start;
+            font-size: 1rem;
+            font-weight: 600;
+            color: $heading-text-color;
+        }
+        thead tr {
+            background-color: $heading-bg-color;
+        }
+        tbody th {
+            padding: .8rem;
+        }
+        tbody tr {
+            font-size: 1rem;
+            font-weight: 500;
+            color: $cell-text-color;
+        }
+        tbody td, th {
+            padding: .5rem 1rem ;
+        }       
+        tbody td {
+            border-bottom: 1px solid #eee;
+
+            img {
+                float: left;
+            }
+            span {
+                padding-left: .5rem;
+                line-height: 2;
+            }
+        }
+    }
+}

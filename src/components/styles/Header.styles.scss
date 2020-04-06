@@ -1,0 +1,45 @@
+header {
+    background-color: #C6DDE1;
+    
+    .container {
+        height: 6.5rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .title {
+        flex-grow: 1;
+    
+        h1 {
+            font-size: 1.4rem;
+            color: #335E65;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+    
+            span {
+                margin-left: 6px;
+            }
+            
+            svg {
+                fill: #335E65;
+                display: inline-block;
+                width: 2em;
+                height: 2em;
+            }
+        }   
+    }
+    
+    .icons {
+        a {
+            font-size: 1.4rem;
+            color: #335E65;
+
+            &:hover {
+                color: rgb(69, 120, 128);
+            }
+        }
+    }
+
+}

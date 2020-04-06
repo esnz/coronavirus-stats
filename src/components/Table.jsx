@@ -10,7 +10,7 @@ const Table = ({countries}) => {
           <tr>
             <th style={{width: '25%'}}>Country</th>
             <th style={{width: '12%'}}>Cases</th>
-            <th style={{width: '12%'}}>New cases</th>
+            <th style={{width: '12%'}}>New Cases</th>
             <th style={{width: '12%'}}>Deaths</th>
             <th style={{width: '12%'}}>New Deaths</th>
             <th style={{width: '12%'}}>Recovered</th>

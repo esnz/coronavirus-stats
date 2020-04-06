@@ -8,6 +8,12 @@ header {
         flex-wrap: nowrap;
     }
 
+    @media screen and (max-width: 768px) {
+        .container {
+            height: 5rem;
+        }
+    }
+
     .title {
         flex-grow: 1;
     
@@ -41,5 +47,4 @@ header {
             }
         }
     }
-
 }

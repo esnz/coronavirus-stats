@@ -12,6 +12,7 @@
             left: .8rem;
         }
         .search-input {
+            max-width: 12rem;
             color: #555;
             padding: .5rem 1rem;
             font-size: 1rem;
@@ -21,9 +22,5 @@
             border-radius: 3px;
             padding-left: 2.3rem;
         }
-    }
-
-    .content {
-        
     }
 }

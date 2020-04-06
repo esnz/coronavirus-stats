@@ -8,7 +8,7 @@ const Table = ({countries}) => {
       <table cellPadding="0" cellSpacing="0">
         <thead>
           <tr>
-            <th style={{width: '25%'}}>Country</th>
+            <th style={{width: '25%', minWidth:'150px'}}>Country</th>
             <th style={{width: '12%'}}>Cases</th>
             <th style={{width: '12%'}}>New Cases</th>
             <th style={{width: '12%'}}>Deaths</th>

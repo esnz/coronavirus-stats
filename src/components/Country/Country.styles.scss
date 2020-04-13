@@ -1,0 +1,195 @@
+.country {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    
+    .go-back-link {
+        color: #7b7d7d;
+        font-size: 1.375;
+        font-weight: 600;
+        text-decoration: none;
+        
+        &:hover {
+            color: #607377;
+        }
+
+        svg {
+            margin-right: 7px;
+        }
+    }
+
+    .info-box {
+        padding: 1.5rem;
+    }
+
+    .title {
+        display: flex;
+        margin-bottom: 3.5rem;
+        align-items: center;
+
+        .country-img {
+            display: block;
+            margin-right: 1rem;
+        }
+    
+        .country-name {
+            font-size: 2.1rem;
+            font-weight: normal;
+            color: #505A5B;
+        }
+    }
+
+    .recovered-bar {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        h6 {
+            color: #8F8F8F;
+            font-weight: normal;
+            font-size: 1rem;
+            margin-bottom: .2rem;
+        }
+
+        .bar {
+            position: relative;
+            margin-bottom: 4rem;
+    
+            .bg {
+                background-color: #EEEEEE;
+                height: 1.3rem;
+                border-radius: 50px;
+            }
+            .progress {
+                background-color: #7AD5AE;
+                height: 1.3rem;
+                border-radius: 50px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 70%;
+                display: flex;
+                justify-content: center;
+                transition: width 0.3s ease-in-out;
+
+                .progress-text {
+                    display: block;
+                    font-size: 1rem;
+                    font-weight: normal;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+        justify-content: center;
+        
+
+        @media screen and (max-width: 992px) {
+            flex-direction: column;
+            margin-top: 10rem;
+            margin-bottom: 10rem;
+            transform: scale(1.3);
+
+            svg {
+                margin-right: 0!important;
+                transform: scale(1.2);;
+
+            }
+            .info {
+                flex-direction: column;
+                margin-top: 1rem;
+                margin-bottom: 2rem;
+                &:not(:last-child) {
+                    margin-right: 0!important;
+                }
+
+                h2 {
+                    margin-top: 1rem;
+                }
+                h2, h5 {
+                    text-align: center;
+                }
+
+                .numbers {
+                    margin-left: 0!important;
+                }
+            }
+        }
+
+        svg {
+            margin-right: 1rem;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .bag {
+            fill: #A3DCE5;
+        }
+        .skull {
+            fill: #F5B5B5;
+        }
+        .recovery {
+            fill: #B9E390;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+
+            &:not(:last-child) {
+                margin-right: 6rem;
+            }
+
+            .titles {
+                h2 {
+                    color: #8F8F8F;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    margin-bottom: .3rem;
+                }
+                h5 {
+                    color: #8F8F8F;
+                    font-size: .9rem;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+            }
+
+            .numbers {
+                margin-left: 1rem;
+                position: relative;
+                top: -2px;
+
+                h2 {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                    line-height: 1.5;
+                }
+                h5 {
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+                &.cases {
+                    h2, h5 {
+                        color: #34B1C5;
+                    }
+                }
+                &.deaths {
+                    h2, h5 {
+                        color: #E85B5B;
+                    }
+                }
+                &.recovered {
+                    h2, h5 {
+                        color: #65C109;
+                    }
+                }
+            }
+        }
+    }
+}

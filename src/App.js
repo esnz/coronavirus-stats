@@ -1,70 +1,87 @@
 import React from 'react';
+import { Route, withRouter } from 'react-router-dom';
 import { getSummaryStats } from './api';
-import Countries from './components/Countries';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Spinner from './components/Spinner';
-import Summary from './components/Summary';
+import Countries from './components/Countries/Countries';
+import Country from './components/Country/Country';
+import Footer from './layouts/Footer';
+import Header from './layouts/Header';
+import Spinner from './components/Spinner/Spinner';
+import Summary from './components/Summary/Summary';
+import Error from './components/Error/Error';
 import './main.scss';
 
+export const LoadingContext = React.createContext({
+  loading: true,
+  setLoading: () => {},
+});
+
 function App() {
-  const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
+
+  const [loading, setLoading] = React.useState(true);
+  const value = { loading, setLoading };
 
   const [data, setData] = React.useState({
     Global: {
       TotalConfirmed: 0,
       TotalDeaths: 0,
-      TotalRecovered: 0
+      TotalRecovered: 0,
     },
     Countries: [],
     FilteredCountries: [],
-    Date: undefined
+    Date: undefined,
   });
 
+  const loadData = async () => {
+    setLoading(true);
+    setError(false);
+
+    try {
+      const res = await getSummaryStats();
+      setData({ ...res, FilteredCountries: res.Countries });
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      setError(true);
+    }
+  };
+
   React.useEffect(() => {
-    getSummaryStats()
-      .then(res => {
-        setData({ ...res, FilteredCountries: res.Countries });
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-        setError(true);
-      });
+    loadData();
   }, []);
 
-  const countryFilter = ({ target }) => {
+  const countryFilter = (e) => {
     setData({
       ...data,
-      FilteredCountries: data.Countries.filter(item => {
-        return item.Country.toLowerCase().indexOf(target.value.toLowerCase()) !== -1;
-      })
+      FilteredCountries: data.Countries.filter((item) => {
+        return item.Country.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1;
+      }),
     });
   };
 
   return (
     <React.Fragment>
       <Header />
-      {error ? (
-        <div className="container flex-grow-1  p-5">
-          <h2 style={{textAlign: 'center'}}>Error loading data!</h2>
+      <LoadingContext.Provider value={value}>
+        {loading ? <Spinner /> : null}
+        <div className="container flex-grow-1">
+          <Route path="/" exact
+            render={() => {
+              return (
+                <div>
+                  {error ? <Error retryCallback={loadData} /> : null}
+                  <Summary global={data.Global} lastUpdate={data.Date} />
+                  <Countries countries={data.FilteredCountries} countryFilter={countryFilter} />
+                </div>
+              );
+            }}
+          />
+          <Route path="/:slug" component={Country} />
         </div>
-      ) : null}
-      {loading ? (
-        <div className="container flex-grow-1 ">
-          <Spinner />
-        </div>
-      ) : null}
-      {!error && !loading ? (
-        <div className="flex-grow-1">
-          <Summary global={data.Global} lastUpdate={data.Date} />
-          <Countries countries={data.FilteredCountries} countryFilter={countryFilter} />
-        </div>
-      ) : null}
+      </LoadingContext.Provider>
       <Footer />
     </React.Fragment>
   );
 }
 
-export default App;
+export default withRouter(App);

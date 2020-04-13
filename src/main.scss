@@ -15,14 +15,20 @@ html {
 
 @media screen and (max-width: 768px) {
     html {
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 
 body {
     box-sizing: border-box;
     background-color: #F4F5F5;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1500px;
+    }
 }
 
 #root {
@@ -35,7 +41,7 @@ body {
     background-color: #fff;
     margin-top: 1rem;
     border-radius: 5px;
-    box-shadow: 2px 2px 2px rgba(197, 197, 197, 0.16);
+    box-shadow: 1px 1px 5px rgba(197, 197, 197, 0.3);
     overflow: hidden;
 }
 

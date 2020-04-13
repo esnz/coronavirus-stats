@@ -1,0 +1,20 @@
+footer {
+    background-color: #fff;
+    
+    .container {
+        height: 6.5rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        p {
+            font-size: .9rem;
+            font-weight: normal;
+            color: #848484;
+
+            a {
+                color: #507774;
+            }
+        }
+    }
+}

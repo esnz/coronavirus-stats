@@ -68,11 +68,11 @@ function App() {
           <Route path="/" exact
             render={() => {
               return (
-                <div>
+                <React.Fragment>
                   {error ? <Error retryCallback={loadData} /> : null}
                   <Summary global={data.Global} lastUpdate={data.Date} />
                   <Countries countries={data.FilteredCountries} countryFilter={countryFilter} />
-                </div>
+                </React.Fragment>
               );
             }}
           />

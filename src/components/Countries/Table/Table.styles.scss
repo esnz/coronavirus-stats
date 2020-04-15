@@ -42,6 +42,7 @@ $cell-text-color: #444;
         tbody tr {
             font-size: 1rem;
             font-weight: 500;
+            cursor: pointer;
             color: $cell-text-color;
 
             &:hover {

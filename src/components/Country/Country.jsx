@@ -35,19 +35,16 @@ const Country = ({match: {params: { slug }}}) => {
   const fetchData = () => {
     setLoading(true);
     setError(false);
-
-    getSummaryStats().then((summary) => {
-      setCountryStats(summary.Countries.find((i) => i.Slug.toLowerCase() === slug));
-    });
-
     const allFetchPromises = [
+      getSummaryStats(),
       getDayOneDataByCountry(slug, 'confirmed'),
       getDayOneDataByCountry(slug, 'deaths'),
       getDayOneDataByCountry(slug, 'recovered'),
     ];
 
     Promise.all(allFetchPromises)
-      .then(([cases, deaths, recovered]) => {
+      .then(([summary, cases, deaths, recovered]) => {
+        setCountryStats(summary.Countries.find((i) => i.Slug.toLowerCase() === slug));
         cases.forEach((c, i) => {
           const date = new Date(c.Date);
           c.Date = `${date.getDate()}/${date.getMonth() + 1}`;

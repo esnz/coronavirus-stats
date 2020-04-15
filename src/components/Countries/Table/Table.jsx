@@ -12,12 +12,10 @@ const Table = ({countries}) => {
       <table cellPadding="0" cellSpacing="0">
         <thead>
           <tr>
-            <th style={{width: '28%', minWidth:'250px'}}>Country</th>
-            <th style={{width: '12%'}}>Cases</th>
-            <th style={{width: '12%'}}>New Cases</th>
-            <th style={{width: '12%'}}>Deaths</th>
-            <th style={{width: '12%'}}>New Deaths</th>
-            <th style={{width: '12%'}}>Recovered</th>
+            <th style={{width: '55%', minWidth:'250px'}}>Country</th>
+            <th style={{width: '15%'}}>Cases</th>
+            <th style={{width: '15%'}}>Deaths</th>
+            <th style={{width: '15%'}}>Recovered</th>
           </tr>
         </thead>
         <tbody>
@@ -30,9 +28,7 @@ const Table = ({countries}) => {
                   <Link to={`${row.Slug}`}><span>{row.Country}</span></Link>
                 </td>
                 <td>{numeral(row.TotalConfirmed).format('0,0')}</td>
-                <td>{numeral(row.NewConfirmed).format('0,0')}</td>
                 <td>{numeral(row.TotalDeaths).format('0,0')}</td>
-                <td>{numeral(row.NewDeaths).format('0,0')}</td>
                 <td>{numeral(row.TotalRecovered).format('0,0')}</td>
               </tr>
             );

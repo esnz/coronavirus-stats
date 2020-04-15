@@ -8,11 +8,13 @@
         svg {
             position: absolute;
             color: #999;
-            top: .7rem;
+            top: .6rem;
             left: .8rem;
         }
         .search-input {
-            // max-width: 12rem;
+            &::placeholder{
+                color: #999;
+            }
             max-width: 18rem;
 
             @media screen and (max-width: 800px) {
@@ -23,10 +25,18 @@
             padding: .5rem 1rem;
             font-size: 1rem;
             font-weight: 500;
-            background-color: #E8E8E8;
+            background-color: rgb(224, 224, 224);
             border: none;
             border-radius: 3px;
             padding-left: 2.3rem;
         }
+    }
+
+    .tip {
+        margin-top: -.2rem;
+        margin-bottom: -.5rem;
+        font-size: .7rem;
+        margin-left: 2.2rem;
+        color: #777;
     }
 }
